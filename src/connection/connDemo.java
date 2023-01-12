@@ -21,13 +21,28 @@ public class connDemo {
         url, username, password);
     System.out.println(
             "Connection Established successfully");
-    String query
-    = "create table tableone(tId int(20) primary key auto_increment, tname varchar(200) not null , tcity varchar(400))";
-    Statement st = con.createStatement();
-    st.executeUpdate(query);
+//    String query
+//    = "create table tableone(tId int(20) primary key auto_increment, tname varchar(200) not null , tcity varchar(400))";
+//    Statement st = con.createStatement();
+//    st.executeUpdate(query);
     
-    System.out.println(
-            "Table created Established successfully");
+    String query2 = "insert into tableone(tname,tcity) values(?,?)"; //Dynamic Query
+    
+    PreparedStatement stmt = con.prepareStatement(query2);
+    
+    
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    System.out.println("Enter Name : - ");
+    String readname = br.readLine();
+    
+    System.out.println("Enter city : - ");
+    String readcity = br.readLine();
+    
+    stmt.setString(1, readname);
+    stmt.setString(2, readcity);
+    
+    stmt.executeUpdate();
+    System.out.println("Table created Established successfully");
     // Execute query
     //rs.next();
     //String name         = rs.getString("name"); // Retrieve name from db
