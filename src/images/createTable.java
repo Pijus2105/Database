@@ -1,14 +1,15 @@
-package connection;
+package images;
 
-import java.io.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class connDemo {
+public class createTable {
 	
 	 public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		 
 	try {
-	
+		
 		String url
         = "jdbc:mysql://localhost:3306/sakila"; // table details
 		 Class.forName(
@@ -21,8 +22,16 @@ public class connDemo {
         url, username, password);
     System.out.println(
             "Connection Established successfully");
-
-
+    
+    String query3 = "create table images(id int primary key auto_increment, pic blob)";
+    
+    PreparedStatement stmtn = con.prepareStatement(query3);
+    
+    stmtn.executeUpdate();
+    
+    System.out.println("Table created Established successfully");
+    
+    con.close(); // close connection
     System.out.println("Connection Closed....");
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -31,28 +40,3 @@ public class connDemo {
 	 }
 
 }
-
-
-
-
-//Statement st = con.createStatement();
-//st.executeUpdate(query);
-
-// String query2 = "insert into tableone(tname,tcity) values(?,?)"; //Dynamic Query
-
-//String query3 = "create table images(id int primary key auto_increment, pic blob)"; 
-// 
-// 
-
-//
-//
-
-
-
-// Execute query
-//rs.next();
-//String name         = rs.getString("name"); // Retrieve name from db
-
-// System.out.println(name); // Print result on console
-//  st.close(); // close statement
- // close connection
