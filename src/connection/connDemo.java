@@ -23,7 +23,7 @@ public class connDemo {
             "Connection Established successfully");
 
 
-    System.out.println("Connection Closed....");
+   // System.out.println("Connection Closed....");
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
