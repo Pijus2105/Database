@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import connection.connDemo;
+
 public class ImageInsert {
 
 	public static void main(String[] args) {
@@ -19,6 +21,8 @@ public class ImageInsert {
 	    
 	    Connection con = DriverManager.getConnection(url, username, password);
 	    
+		
+		
 	    String query = "insert into images (pic) values (?)";
 	    
 	    PreparedStatement stmt = con.prepareStatement(query);
